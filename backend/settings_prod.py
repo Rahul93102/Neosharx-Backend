@@ -15,12 +15,18 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = [
     'backend-neosharx.onrender.com',
     'www.backend-neosharx.onrender.com',
+    'backend-neosharx-1.onrender.com',  # Current Render domain
     'neosharx-backend.onrender.com',
     'www.neosharx-backend.onrender.com',
     'localhost',
     '127.0.0.1',
     '0.0.0.0',
 ]
+
+# Add dynamic host from environment if available (for Render flexibility)
+render_host = config('RENDER_EXTERNAL_HOSTNAME', default=None)
+if render_host:
+    ALLOWED_HOSTS.append(render_host)
 
 # Application definition
 INSTALLED_APPS = [
