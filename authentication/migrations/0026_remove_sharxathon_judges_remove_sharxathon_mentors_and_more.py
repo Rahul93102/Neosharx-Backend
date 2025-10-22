@@ -10,6 +10,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.AlterUniqueTogether(
+            name="hackathonmentorlink",
+            unique_together=set(),
+        ),
         migrations.RemoveField(
             model_name="sharxathon",
             name="judges",
@@ -21,10 +25,6 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name="hackathonmentorlink",
             name="mentor",
-        ),
-        migrations.AlterUniqueTogether(
-            name="hackathonmentorlink",
-            unique_together=None,
         ),
         migrations.DeleteModel(
             name="HackathonJudge",
