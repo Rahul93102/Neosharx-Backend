@@ -23,6 +23,8 @@ if env_file.exists():
 else:
     from decouple import config
 
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,12 +41,18 @@ else:
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-0qmja60_hcr1a-f1y54a7#k)dr8l*ma$)i4catatq!fn!hxqya"
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-dev-key-change-in-production')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend-neosharx.onrender.com', 'www.backend-neosharx.onrender.com']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+
+# Security settings for development (will be overridden in production)
+SECURE_SSL_REDIRECT = False  # Don't force HTTPS in development
+SESSION_COOKIE_SECURE = False  # Allow cookies over HTTP in development
+CSRF_COOKIE_SECURE = False  # Allow CSRF cookies over HTTP in development
+SECURE_HSTS_SECONDS = 0  # Disable HSTS in development
 
 
 # Application definition
@@ -97,25 +105,22 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# For development, using SQLite. Switch to PostgreSQL for production
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# Database configuration using dj-database-url
+DATABASE_URL = config('DATABASE_URL', default='')
 
-# Uncomment below for PostgreSQL (make sure PostgreSQL is installed and running)
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "neosharx_db",
-#         "USER": "postgres",
-#         "PASSWORD": "your_password",
-#         "HOST": "localhost",
-#         "PORT": "5432",
-#     }
-# }
+if DATABASE_URL:
+    # Use the database URL if provided (for production)
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL)
+    }
+else:
+    # Default to SQLite for local development
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation
