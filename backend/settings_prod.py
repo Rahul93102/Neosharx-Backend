@@ -15,10 +15,12 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = [
     'backend-neosharx.onrender.com',
     'www.backend-neosharx.onrender.com',
+    'neosharx-backend.onrender.com',
+    'www.neosharx-backend.onrender.com',
     'localhost',
     '127.0.0.1',
     '0.0.0.0',
-] + config('ALLOWED_HOSTS', default='').split(',')
+]
 
 # Application definition
 INSTALLED_APPS = [
