@@ -1,6 +1,7 @@
 # 🚀 Render Deployment Guide for Neosharx Backend
 
 ## 📋 Prerequisites
+
 - GitHub repository connected to Render
 - OAuth apps configured (LinkedIn, Google)
 - Twilio account set up
@@ -8,6 +9,7 @@
 ## 🔧 Configuration Files Created/Updated
 
 ### 1. render.yaml (Blueprint Deployment)
+
 ```yaml
 services:
   - type: web
@@ -54,6 +56,7 @@ databases:
 ```
 
 ### 2. Updated .env File
+
 ```bash
 # LinkedIn OAuth Configuration
 LINKEDIN_CLIENT_ID=your_linkedin_client_id_here
@@ -82,18 +85,22 @@ DATABASE_URL=
 ## 🚀 Deployment Steps
 
 ### Option 1: Blueprint Deployment (Recommended)
+
 1. **Connect Repository**: Go to Render.com and connect your GitHub repository
 2. **Create Blueprint**: Upload the `render.yaml` file or use the content above
 3. **Configure Environment Variables**: The blueprint will prompt for sensitive values
 4. **Deploy**: Click "Apply" to deploy the entire stack
 
 ### Option 2: Manual Deployment
+
 1. **Create Web Service**:
+
    - Runtime: Python 3
    - Build Command: `pip install -r requirements.txt`
    - Start Command: `gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT --workers 3`
 
 2. **Create PostgreSQL Database**:
+
    - Add a PostgreSQL database in Render
    - Link it to your web service
 
@@ -116,15 +123,19 @@ DATABASE_URL=
 ## 🔄 Post-Deployment Configuration
 
 ### Update OAuth Redirect URIs
+
 After deployment, update your OAuth app settings:
 
 **LinkedIn App**:
+
 - Redirect URI: `https://your-app-name.onrender.com/auth/linkedin/callback.html`
 
 **Google OAuth App**:
+
 - Redirect URI: `https://your-app-name.onrender.com/auth/google/callback.html`
 
 ### Update CORS Origins
+
 Update `CORS_ALLOWED_ORIGINS` in Render environment variables with your actual frontend domain.
 
 ## ✅ Verification Steps
@@ -140,12 +151,14 @@ Update `CORS_ALLOWED_ORIGINS` in Render environment variables with your actual f
 ## 🔧 Troubleshooting
 
 ### Common Issues:
+
 - **Database Connection**: Ensure DATABASE_URL is set correctly
 - **Static Files**: WhiteNoise should handle static files automatically
 - **CORS Errors**: Update CORS_ALLOWED_ORIGINS with correct frontend URL
 - **OAuth Redirects**: Ensure redirect URIs match deployed domain
 
 ### Environment Variables:
+
 - Never commit secrets to git
 - Use Render's environment variable management
 - Generate a new SECRET_KEY for production
