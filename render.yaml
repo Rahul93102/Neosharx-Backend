@@ -5,7 +5,7 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT --workers 3
     healthCheckPath: /healthz
-    preDeployCommand: python manage_prod.py migrate --verbosity=1
+    preDeployCommand: python migrate_with_debug.py
     envVars:
       - key: DEBUG
         value: false
