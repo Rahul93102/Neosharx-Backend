@@ -25,6 +25,8 @@ services:
         value: http://localhost:3000,https://your-actual-frontend-domain.com,https://www.your-actual-frontend-domain.com
       - key: CORS_ALLOW_ALL_ORIGINS
         value: false
+      - key: DJANGO_ENV
+        value: production
       - key: LINKEDIN_CLIENT_ID
         sync: false
       - key: LINKEDIN_CLIENT_SECRET
