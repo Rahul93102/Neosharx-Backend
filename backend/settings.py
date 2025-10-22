@@ -11,10 +11,28 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load .env file explicitly
+from decouple import Config, RepositoryEnv
+env_file = BASE_DIR / '.env'
+if env_file.exists():
+    config = Config(RepositoryEnv(str(env_file)))
+else:
+    from decouple import config
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load .env file explicitly
+env_file = BASE_DIR / '.env'
+if env_file.exists():
+    from decouple import Config, RepositoryEnv
+    config = Config(RepositoryEnv(str(env_file)))
+else:
+    from decouple import config
 
 
 # Quick-start development settings - unsuitable for production
@@ -142,24 +160,24 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Twilio Configuration
-TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID', default='dummy_account_sid')
-TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN', default='dummy_auth_token')
-TWILIO_VERIFY_SERVICE_SID = config('TWILIO_VERIFY_SERVICE_SID', default='dummy_verify_sid')
+TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN')
+TWILIO_VERIFY_SERVICE_SID = config('TWILIO_VERIFY_SERVICE_SID')
 
 # Testing Configuration
 USE_MOCK_OTP = False  # Disable mock OTP to use real Twilio SMS
 MOCK_OTP_CODE = '123456'  # Default OTP for testing (not used when USE_MOCK_OTP is False)
 
 # LinkedIn OAuth Configuration
-LINKEDIN_CLIENT_ID = config('LINKEDIN_CLIENT_ID', default='dummy_linkedin_client_id')
-LINKEDIN_CLIENT_SECRET = config('LINKEDIN_CLIENT_SECRET', default='dummy_linkedin_client_secret')
+LINKEDIN_CLIENT_ID = config('LINKEDIN_CLIENT_ID')
+LINKEDIN_CLIENT_SECRET = config('LINKEDIN_CLIENT_SECRET')
 # Important: This MUST match exactly with the redirect URI registered in LinkedIn Developer Portal
 LINKEDIN_REDIRECT_URI = config('LINKEDIN_REDIRECT_URI', default='http://localhost:8001/auth/linkedin/callback.html')
 LINKEDIN_SCOPE = 'openid profile email'
 
 # Google OAuth Configuration
-GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID', default='dummy_google_client_id')
-GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET', default='dummy_google_client_secret')
+GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
+GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET')
 # Important: This MUST match exactly with the redirect URI registered in Google Cloud Console
 GOOGLE_REDIRECT_URI = config('GOOGLE_REDIRECT_URI', default='http://localhost:8001/auth/google/callback.html')
 GOOGLE_SCOPE = 'openid email profile'
