@@ -16,10 +16,16 @@ def serve_callback_file(request, provider):
     except FileNotFoundError:
         return HttpResponse(f"Callback file for {provider} not found at {file_path}", status=404)
 
+def health_check(request):
+    """Health check endpoint for Render"""
+    return HttpResponse("OK")
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/auth/", include("authentication.urls")),
     # OAuth callback file serving
     path("auth/google/callback.html", lambda request: serve_callback_file(request, 'google')),
     path("auth/linkedin/callback.html", lambda request: serve_callback_file(request, 'linkedin')),
+    # Health check for Render
+    path("healthz/", health_check),
 ]
