@@ -33,9 +33,28 @@ try:
                 cursor.execute("SELECT 1")
             print("✅ Database connection successful")
 
+            # Check current migration status
+            print("� Checking migration status...")
+            from django.core.management import call_command
+            from io import StringIO
+            output = StringIO()
+            call_command('showmigrations', stdout=output, verbosity=1)
+            migrations_output = output.getvalue()
+            print("Current migrations status:")
+            print(migrations_output)
+
+            # Check if there are any pending migrations
+            output = StringIO()
+            call_command('migrate', stdout=output, verbosity=1, dry_run=True, interactive=False)
+            dry_run_output = output.getvalue()
+            if "No migrations to apply" in dry_run_output:
+                print("✅ No pending migrations")
+            else:
+                print("⚠️  Pending migrations found:")
+                print(dry_run_output)
+
             # Run migrations
             print("🚀 Running migrations...")
-            from django.core.management import call_command
             call_command('migrate', verbosity=2, interactive=False)
             print("✅ Migrations completed successfully")
 
