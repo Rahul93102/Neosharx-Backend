@@ -1,6 +1,7 @@
 # Environment variables
 .env
 .env.local
+.env.dev
 .env.production
 
 # Git backup
