@@ -15,7 +15,7 @@ services:
   - type: web
     name: neosharx-backend
     runtime: python3
-    buildCommand: pip install -r requirements_prod.txt && python manage_prod.py migrate && python manage_prod.py collectstatic --noinput
+    buildCommand: pip install -r requirements_prod.txt && python manage_prod.py migrate
     startCommand: gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT --workers 3
     envVars:
       - key: DEBUG
@@ -96,7 +96,7 @@ DATABASE_URL=
 1. **Create Web Service**:
 
    - Runtime: Python 3
-   - Build Command: `pip install -r requirements_prod.txt && python manage_prod.py migrate && python manage_prod.py collectstatic --noinput`
+   - Build Command: `pip install -r requirements_prod.txt && python manage_prod.py migrate`
    - Start Command: `gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT --workers 3`
 
 2. **Create PostgreSQL Database**:
