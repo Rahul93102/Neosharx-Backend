@@ -12,16 +12,7 @@ SECRET_KEY = config('SECRET_KEY', default="django-insecure-0qmja60_hcr1a-f1y54a7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = [
-    'backend-neosharx.onrender.com',
-    'www.backend-neosharx.onrender.com',
-    'backend-neosharx-1.onrender.com',  # Current Render domain
-    'neosharx-backend.onrender.com',
-    'www.neosharx-backend.onrender.com',
-    'localhost',
-    '127.0.0.1',
-    '0.0.0.0',
-]
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='neosharx-backend-1.onrender.com,neosharx-backend.onrender.com,backend-neosharx.onrender.com,backend-neosharx-1.onrender.com,localhost,127.0.0.1,0.0.0.0').split(',')
 
 # Add dynamic host from environment if available (for Render flexibility)
 render_host = config('RENDER_EXTERNAL_HOSTNAME', default=None)
@@ -111,7 +102,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # WhiteNoise configuration
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -136,24 +127,20 @@ REST_FRAMEWORK = {
 }
 
 # CORS Configuration
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,http://127.0.0.1:3000').split(',')
-CORS_ALLOW_ALL_ORIGINS = config('CORS_ALLOW_ALL_ORIGINS', default=not DEBUG, cast=bool)
-
-# Twilio Configuration
-TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID', default='')
-TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN', default='')
-TWILIO_VERIFY_SERVICE_SID = config('TWILIO_VERIFY_SERVICE_SID', default='')
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='https://delightful-begonia-2abf97.netlify.app,https://68fb913-delightful-begonia-2abf97.netlify.app,https://neosharx.com,http://localhost:3000,http://127.0.0.1:3000,http://localhost:8080,http://127.0.0.1:8080').split(',')
+CORS_ALLOW_ALL_ORIGINS = config('CORS_ALLOW_ALL_ORIGINS', default=False, cast=bool)
+CORS_ALLOW_CREDENTIALS = True
 
 # LinkedIn OAuth Configuration
-LINKEDIN_CLIENT_ID = config('LINKEDIN_CLIENT_ID', default='')
-LINKEDIN_CLIENT_SECRET = config('LINKEDIN_CLIENT_SECRET', default='')
-LINKEDIN_REDIRECT_URI = config('LINKEDIN_REDIRECT_URI', default='http://localhost:8001/auth/linkedin/callback.html')
+LINKEDIN_CLIENT_ID = config('LINKEDIN_CLIENT_ID', default='86dpm6h8iucjob')
+LINKEDIN_CLIENT_SECRET = config('LINKEDIN_CLIENT_SECRET', default='WPL_AP1.HButMyqDiVYMFBA3.fYQYJA==')
+LINKEDIN_REDIRECT_URI = config('LINKEDIN_REDIRECT_URI', default='https://neosharx-backend-1.onrender.com/auth/linkedin/callback.html')
 LINKEDIN_SCOPE = 'openid profile email'
 
 # Google OAuth Configuration
-GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID', default='')
-GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET', default='')
-GOOGLE_REDIRECT_URI = config('GOOGLE_REDIRECT_URI', default='http://localhost:8001/auth/google/callback.html')
+GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID', default='86763111237-gnijas0m3mb57oin84ad5332llv52i8f.apps.googleusercontent.com')
+GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET', default='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')
+GOOGLE_REDIRECT_URI = config('GOOGLE_REDIRECT_URI', default='https://neosharx-backend-1.onrender.com/auth/google/callback.html')
 GOOGLE_SCOPE = 'openid email profile'
 
 # Security Settings for Production
@@ -167,6 +154,11 @@ if not DEBUG:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
 
+# Twilio Configuration
+TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID', default='AC75382b2e88fbf5cc3dd9fc9977d349f7')
+TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN', default='58363f0e4f071376a03d26029e1f3497')
+TWILIO_VERIFY_SERVICE_SID = config('TWILIO_VERIFY_SERVICE_SID', default='VAc303d58051e47519ab721ec977048760')
+
 # Logging Configuration
 LOGGING = {
     'version': 1,
@@ -178,6 +170,12 @@ LOGGING = {
         },
     },
     'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs' / 'django.log',
+            'formatter': 'verbose',
+        },
         'console': {
             'level': 'INFO',
             'class': 'logging.StreamHandler',
@@ -185,7 +183,7 @@ LOGGING = {
         },
     },
     'root': {
-        'handlers': ['console'],
+        'handlers': ['console', 'file'],
         'level': 'INFO',
     },
 }
