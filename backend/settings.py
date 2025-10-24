@@ -177,14 +177,14 @@ MOCK_OTP_CODE = '123456'  # Default OTP for testing (not used when USE_MOCK_OTP 
 LINKEDIN_CLIENT_ID = config('LINKEDIN_CLIENT_ID')
 LINKEDIN_CLIENT_SECRET = config('LINKEDIN_CLIENT_SECRET')
 # Important: This MUST match exactly with the redirect URI registered in LinkedIn Developer Portal
-LINKEDIN_REDIRECT_URI = config('LINKEDIN_REDIRECT_URI', default='http://localhost:8001/auth/linkedin/callback.html')
+LINKEDIN_REDIRECT_URI = config('LINKEDIN_REDIRECT_URI', default='https://neosharx-backend-1.onrender.com/auth/linkedin/callback.html')
 LINKEDIN_SCOPE = 'openid profile email'
 
 # Google OAuth Configuration
 GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET')
 # Important: This MUST match exactly with the redirect URI registered in Google Cloud Console
-GOOGLE_REDIRECT_URI = config('GOOGLE_REDIRECT_URI', default='http://localhost:8001/auth/google/callback.html')
+GOOGLE_REDIRECT_URI = config('GOOGLE_REDIRECT_URI', default='https://backend-neosharx-1.onrender.com/auth/google/callback.html')
 GOOGLE_SCOPE = 'openid email profile'
 
 # CORS settings
@@ -193,7 +193,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:8080",
     "http://127.0.0.1:8080",
-    "http://localhost:8001",
+    "https://neosharx-backend-1.onrender.com",
+    'https://backend-neosharx-1.onrender.com',
     "http://127.0.0.1:8001",
 ]
 
@@ -202,7 +203,8 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://localhost:8001",
+    "https://neosharx-backend-1.onrender.com",
+    "https://backend-neosharx-1.onrender.com",
     "http://127.0.0.1:8001",
 ]
 
