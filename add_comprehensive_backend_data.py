@@ -11,8 +11,32 @@ from django.utils import timezone
 # Add the project directory to the path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
+#!/usr/bin/env python
+"""
+Comprehensive script to add sample data to NeoSharX backend
+Works with both local development and production environments
+"""
+import os
+import django
+import sys
+from datetime import date, time, timedelta, datetime
+from django.utils import timezone
+
+# Add the project directory to the path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+# Determine which settings to use based on environment
+if os.environ.get('RENDER') or os.environ.get('DATABASE_URL'):
+    # Production environment (Render)
+    settings_module = 'backend.settings_prod'
+    print("🌐 Using production settings (Render)")
+else:
+    # Local development
+    settings_module = 'backend.settings'
+    print("💻 Using local development settings")
+
 # Setup Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings_prod')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 django.setup()
 
 from authentication.models import (
@@ -164,6 +188,70 @@ def add_neo_projects():
             'is_published': True,
             'is_open_source': True,
             'featured_image': 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800',
+        },{
+            'title': 'Smart Agriculture IoT Platform',
+            'description': 'IoT platform for precision farming with real-time monitoring and automated irrigation.',
+            'detailed_description': 'A comprehensive IoT solution for modern farming that monitors soil moisture, temperature, and crop health using sensors and provides automated irrigation recommendations.',
+            'category': 'iot',
+            'technologies': 'React, Node.js, MongoDB, Raspberry Pi, MQTT',
+            'github_url': 'https://github.com/neosharx/smart-agri-iot',
+            'status': 'beta',
+            'difficulty_level': 'intermediate',
+            'features': ['Real-time sensor monitoring', 'Automated irrigation', 'Mobile app dashboard', 'Weather integration'],
+            'developer_name': 'Priya Patel',
+            'developer_email': 'priya@neosharx.com',
+            'is_featured': True,
+            'is_published': True,
+            'is_open_source': True,
+            'featured_image': 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800',
+        },{
+            'title': 'Smart Agriculture IoT Platform',
+            'description': 'IoT platform for precision farming with real-time monitoring and automated irrigation.',
+            'detailed_description': 'A comprehensive IoT solution for modern farming that monitors soil moisture, temperature, and crop health using sensors and provides automated irrigation recommendations.',
+            'category': 'iot',
+            'technologies': 'React, Node.js, MongoDB, Raspberry Pi, MQTT',
+            'github_url': 'https://github.com/neosharx/smart-agri-iot',
+            'status': 'beta',
+            'difficulty_level': 'intermediate',
+            'features': ['Real-time sensor monitoring', 'Automated irrigation', 'Mobile app dashboard', 'Weather integration'],
+            'developer_name': 'Priya Patel',
+            'developer_email': 'priya@neosharx.com',
+            'is_featured': True,
+            'is_published': True,
+            'is_open_source': True,
+            'featured_image': 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800',
+        },{
+            'title': 'Smart Agriculture IoT Platform',
+            'description': 'IoT platform for precision farming with real-time monitoring and automated irrigation.',
+            'detailed_description': 'A comprehensive IoT solution for modern farming that monitors soil moisture, temperature, and crop health using sensors and provides automated irrigation recommendations.',
+            'category': 'iot',
+            'technologies': 'React, Node.js, MongoDB, Raspberry Pi, MQTT',
+            'github_url': 'https://github.com/neosharx/smart-agri-iot',
+            'status': 'beta',
+            'difficulty_level': 'intermediate',
+            'features': ['Real-time sensor monitoring', 'Automated irrigation', 'Mobile app dashboard', 'Weather integration'],
+            'developer_name': 'Priya Patel',
+            'developer_email': 'priya@neosharx.com',
+            'is_featured': True,
+            'is_published': True,
+            'is_open_source': True,
+            'featured_image': 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800',
+        },{
+            'title': 'Smart Agriculture IoT Platform',
+            'description': 'IoT platform for precision farming with real-time monitoring and automated irrigation.',
+            'detailed_description': 'A comprehensive IoT solution for modern farming that monitors soil moisture, temperature, and crop health using sensors and provides automated irrigation recommendations.',
+            'category': 'iot',
+            'technologies': 'React, Node.js, MongoDB, Raspberry Pi, MQTT',
+            'github_url': 'https://github.com/neosharx/smart-agri-iot',
+            'status': 'beta',
+            'difficulty_level': 'intermediate',
+            'features': ['Real-time sensor monitoring', 'Automated irrigation', 'Mobile app dashboard', 'Weather integration'],
+            'developer_name': 'Priya Patel',
+            'developer_email': 'priya@neosharx.com',
+            'is_featured': True,
+            'is_published': True,
+            'is_open_source': True,
+            'featured_image': 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800',
         }
     ]
 
@@ -237,6 +325,110 @@ def add_neo_stories():
             'main_image': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200',
             'is_featured': True,
             'is_published': True,
+        },{
+            'header': 'Revolutionizing Healthcare with AI',
+            'introduction': 'How Dr. Priya\'s AI diagnostic tool is saving lives in rural India',
+            'sections': [
+                {
+                    'subheading': 'The Healthcare Challenge',
+                    'paragraph': 'In rural India, access to quality healthcare remains a major challenge. Dr. Priya noticed that many patients were misdiagnosed due to lack of specialist doctors in remote areas.',
+                    'media_type': 'image',
+                    'media_url': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800',
+                    'media_caption': 'Rural healthcare center in India'
+                },
+                {
+                    'subheading': 'Building the Solution',
+                    'paragraph': 'Combining her medical expertise with AI knowledge, Dr. Priya developed an affordable diagnostic tool that can identify common diseases with 95% accuracy using just a smartphone camera.',
+                    'media_type': 'image',
+                    'media_url': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800',
+                    'media_caption': 'The AI diagnostic device'
+                }
+            ],
+            'category': 'social_impact',
+            'tags': 'healthcare, AI, rural development, diagnostics',
+            'author_name': 'Michael Chen',
+            'read_time': 6,
+            'main_image': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200',
+            'is_featured': True,
+            'is_published': True,
+        },{
+            'header': 'Revolutionizing Healthcare with AI',
+            'introduction': 'How Dr. Priya\'s AI diagnostic tool is saving lives in rural India',
+            'sections': [
+                {
+                    'subheading': 'The Healthcare Challenge',
+                    'paragraph': 'In rural India, access to quality healthcare remains a major challenge. Dr. Priya noticed that many patients were misdiagnosed due to lack of specialist doctors in remote areas.',
+                    'media_type': 'image',
+                    'media_url': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800',
+                    'media_caption': 'Rural healthcare center in India'
+                },
+                {
+                    'subheading': 'Building the Solution',
+                    'paragraph': 'Combining her medical expertise with AI knowledge, Dr. Priya developed an affordable diagnostic tool that can identify common diseases with 95% accuracy using just a smartphone camera.',
+                    'media_type': 'image',
+                    'media_url': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800',
+                    'media_caption': 'The AI diagnostic device'
+                }
+            ],
+            'category': 'social_impact',
+            'tags': 'healthcare, AI, rural development, diagnostics',
+            'author_name': 'Michael Chen',
+            'read_time': 6,
+            'main_image': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200',
+            'is_featured': True,
+            'is_published': True,
+        },{
+            'header': 'Revolutionizing Healthcare with AI',
+            'introduction': 'How Dr. Priya\'s AI diagnostic tool is saving lives in rural India',
+            'sections': [
+                {
+                    'subheading': 'The Healthcare Challenge',
+                    'paragraph': 'In rural India, access to quality healthcare remains a major challenge. Dr. Priya noticed that many patients were misdiagnosed due to lack of specialist doctors in remote areas.',
+                    'media_type': 'image',
+                    'media_url': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800',
+                    'media_caption': 'Rural healthcare center in India'
+                },
+                {
+                    'subheading': 'Building the Solution',
+                    'paragraph': 'Combining her medical expertise with AI knowledge, Dr. Priya developed an affordable diagnostic tool that can identify common diseases with 95% accuracy using just a smartphone camera.',
+                    'media_type': 'image',
+                    'media_url': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800',
+                    'media_caption': 'The AI diagnostic device'
+                }
+            ],
+            'category': 'social_impact',
+            'tags': 'healthcare, AI, rural development, diagnostics',
+            'author_name': 'Michael Chen',
+            'read_time': 6,
+            'main_image': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200',
+            'is_featured': True,
+            'is_published': True,
+        },{
+            'header': 'Revolutionizing Healthcare with AI',
+            'introduction': 'How Dr. Priya\'s AI diagnostic tool is saving lives in rural India',
+            'sections': [
+                {
+                    'subheading': 'The Healthcare Challenge',
+                    'paragraph': 'In rural India, access to quality healthcare remains a major challenge. Dr. Priya noticed that many patients were misdiagnosed due to lack of specialist doctors in remote areas.',
+                    'media_type': 'image',
+                    'media_url': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800',
+                    'media_caption': 'Rural healthcare center in India'
+                },
+                {
+                    'subheading': 'Building the Solution',
+                    'paragraph': 'Combining her medical expertise with AI knowledge, Dr. Priya developed an affordable diagnostic tool that can identify common diseases with 95% accuracy using just a smartphone camera.',
+                    'media_type': 'image',
+                    'media_url': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800',
+                    'media_caption': 'The AI diagnostic device'
+                }
+            ],
+            'category': 'social_impact',
+            'tags': 'healthcare, AI, rural development, diagnostics',
+            'author_name': 'Michael Chen',
+            'read_time': 6,
+            'main_image': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200',
+            'is_featured': True,
+            'is_published': True,
         }
     ]
 
@@ -245,7 +437,6 @@ def add_neo_stories():
         print(f"✓ Created story: {story.header}")
 
 def add_robotics_news():
-    """Add sample Robotics News"""
     print("\n--- Adding Robotics News ---")
     RoboticsNews.objects.all().delete()
 
@@ -283,6 +474,190 @@ def add_robotics_news():
             'is_featured': False,
             'is_published': True,
             'reading_time': 5,
+        },
+        {
+            'title': 'Soft Robotics Revolution in Medical Surgery',
+            'subtitle': 'Flexible robots enable minimally invasive procedures',
+            'summary': 'Soft robotic systems are transforming surgical procedures with their flexibility and precision, enabling surgeries that were previously impossible.',
+            'content': 'Researchers at Harvard have developed soft robotic systems that can navigate through the human body with unprecedented flexibility. These robots can perform complex surgical procedures through tiny incisions, reducing patient recovery time and complications.',
+            'category': 'medical',
+            'tags': 'soft robotics, medical surgery, minimally invasive, Harvard',
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800',
+            'source_name': 'Nature Robotics',
+            'author_name': 'Dr. Emily Chen',
+            'robot_type': 'Soft Robot',
+            'technology_focus': 'Flexible materials, medical applications, surgical precision',
+            'is_featured': True,
+            'is_published': True,
+            'reading_time': 6,
+        },
+        {
+            'title': 'Autonomous Underwater Vehicles Map Ocean Floor',
+            'subtitle': 'Deep-sea exploration reaches new depths',
+            'summary': 'Advanced AUVs equipped with AI are creating detailed maps of previously unexplored ocean territories.',
+            'content': 'The latest generation of autonomous underwater vehicles (AUVs) has successfully mapped over 10,000 square kilometers of ocean floor in the Mariana Trench. These robots use advanced sonar systems and AI algorithms to create detailed 3D maps for scientific research.',
+            'category': 'marine',
+            'tags': 'AUV, ocean exploration, deep sea, mapping',
+            'priority': 'medium',
+            'featured_image': 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800',
+            'source_name': 'Ocean Engineering Journal',
+            'author_name': 'Prof. Michael Torres',
+            'robot_type': 'Autonomous Underwater Vehicle',
+            'technology_focus': 'Underwater navigation, sonar mapping, AI exploration',
+            'is_featured': False,
+            'is_published': True,
+            'reading_time': 5,
+        },
+        {
+            'title': 'Collaborative Robots Transform Manufacturing',
+            'subtitle': 'Cobots work safely alongside human workers',
+            'summary': 'Collaborative robots are revolutionizing manufacturing by working safely alongside human employees, increasing productivity and reducing workplace injuries.',
+            'content': 'Universal Robots\' latest cobot models have achieved Safety Category 4 certification, allowing them to work directly with human operators without safety barriers. These robots use advanced sensors and AI to detect and respond to human presence.',
+            'category': 'industrial',
+            'tags': 'cobots, manufacturing, safety, collaboration',
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800',
+            'source_name': 'Manufacturing Today',
+            'author_name': 'James Wilson',
+            'robot_type': 'Collaborative Robot (Cobot)',
+            'technology_focus': 'Human-robot collaboration, safety systems, industrial automation',
+            'is_featured': True,
+            'is_published': True,
+            'reading_time': 4,
+        },
+        {
+            'title': 'Drone Swarms Coordinate Disaster Response',
+            'subtitle': 'AI-powered drone networks save lives in emergencies',
+            'summary': 'Coordinated drone swarms equipped with AI are revolutionizing disaster response by providing real-time situational awareness and rapid assistance.',
+            'content': 'During recent wildfires in California, AI-coordinated drone swarms successfully mapped fire perimeters, located stranded individuals, and delivered emergency supplies. The drones communicate with each other to optimize coverage and avoid collisions.',
+            'category': 'emergency',
+            'tags': 'drone swarms, disaster response, AI coordination, emergency services',
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800',
+            'source_name': 'Emergency Management Journal',
+            'author_name': 'Lt. Sarah Rodriguez',
+            'robot_type': 'Drone Swarm',
+            'technology_focus': 'Swarm coordination, emergency response, AI decision-making',
+            'is_featured': True,
+            'is_published': True,
+            'reading_time': 5,
+        },
+        {
+            'title': 'Exoskeletons Restore Mobility to Paralyzed Patients',
+            'subtitle': 'Wearable robots help patients walk again',
+            'summary': 'Advanced exoskeleton technology is enabling paralyzed patients to walk independently, marking a breakthrough in rehabilitation robotics.',
+            'content': 'Ekso Bionics\' latest exoskeleton uses brain-computer interfaces and advanced sensors to interpret user intentions and provide powered assistance. Clinical trials show 85% of patients regain some walking ability within 6 months.',
+            'category': 'rehabilitation',
+            'tags': 'exoskeletons, paralysis, rehabilitation, brain-computer interface',
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800',
+            'source_name': 'Journal of Rehabilitation Robotics',
+            'author_name': 'Dr. Lisa Park',
+            'robot_type': 'Medical Exoskeleton',
+            'technology_focus': 'Rehabilitation, brain-computer interfaces, powered assistance',
+            'is_featured': True,
+            'is_published': True,
+            'reading_time': 6,
+        },
+        {
+            'title': 'Self-Driving Cars Navigate Urban Environments',
+            'subtitle': 'Autonomous vehicles master complex city driving',
+            'summary': 'Latest autonomous vehicle systems successfully navigate urban traffic, pedestrian interactions, and unpredictable road conditions.',
+            'content': 'Waymo\'s latest autonomous vehicles have completed over 1 million miles of urban driving without human intervention. The system uses advanced AI to predict pedestrian behavior, handle complex intersections, and adapt to changing weather conditions.',
+            'category': 'transportation',
+            'tags': 'autonomous vehicles, urban driving, AI, transportation',
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
+            'source_name': 'Autonomous Vehicle Journal',
+            'author_name': 'Dr. Alex Kumar',
+            'robot_type': 'Autonomous Vehicle',
+            'technology_focus': 'Urban navigation, pedestrian prediction, adaptive driving',
+            'is_featured': False,
+            'is_published': True,
+            'reading_time': 5,
+        },
+        {
+            'title': 'Nanobots Deliver Targeted Cancer Treatment',
+            'subtitle': 'Microscopic robots revolutionize chemotherapy',
+            'summary': 'Nanobots equipped with AI can navigate bloodstreams to deliver cancer drugs directly to tumor cells, minimizing side effects.',
+            'content': 'Researchers at MIT have developed nanobots that use magnetic fields and AI algorithms to navigate through the human bloodstream. These microscopic robots can identify cancer cells and deliver chemotherapy drugs with pinpoint accuracy.',
+            'category': 'nanotechnology',
+            'tags': 'nanobots, cancer treatment, targeted delivery, chemotherapy',
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800',
+            'source_name': 'Nature Nanotechnology',
+            'author_name': 'Dr. Jennifer Liu',
+            'robot_type': 'Nanobot',
+            'technology_focus': 'Targeted drug delivery, cancer treatment, nanotechnology',
+            'is_featured': True,
+            'is_published': True,
+            'reading_time': 7,
+        },
+        {
+            'title': 'Warehouse Robots Optimize Supply Chain',
+            'subtitle': 'Automated systems transform logistics operations',
+            'summary': 'Next-generation warehouse robots are revolutionizing supply chain management with intelligent automation and predictive analytics.',
+            'content': 'Amazon\'s latest warehouse robots can predict demand patterns, optimize inventory placement, and coordinate with human workers for maximum efficiency. The system has reduced order fulfillment time by 50% while maintaining 99.9% accuracy.',
+            'category': 'logistics',
+            'tags': 'warehouse automation, supply chain, predictive analytics, logistics',
+            'priority': 'medium',
+            'featured_image': 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800',
+            'source_name': 'Supply Chain Management Review',
+            'author_name': 'Mark Thompson',
+            'robot_type': 'Warehouse Robot',
+            'technology_focus': 'Inventory optimization, predictive analytics, human-robot coordination',
+            'is_featured': False,
+            'is_published': True,
+            'reading_time': 4,
+        },{
+            'title': 'Warehouse Robots Optimize Supply Chain',
+            'subtitle': 'Automated systems transform logistics operations',
+            'summary': 'Next-generation warehouse robots are revolutionizing supply chain management with intelligent automation and predictive analytics.',
+            'content': 'Amazon\'s latest warehouse robots can predict demand patterns, optimize inventory placement, and coordinate with human workers for maximum efficiency. The system has reduced order fulfillment time by 50% while maintaining 99.9% accuracy.',
+            'category': 'logistics',
+            'tags': 'warehouse automation, supply chain, predictive analytics, logistics',
+            'priority': 'medium',
+            'featured_image': 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800',
+            'source_name': 'Supply Chain Management Review',
+            'author_name': 'Mark Thompson',
+            'robot_type': 'Warehouse Robot',
+            'technology_focus': 'Inventory optimization, predictive analytics, human-robot coordination',
+            'is_featured': False,
+            'is_published': True,
+            'reading_time': 4,
+        },{
+            'title': 'Warehouse Robots Optimize Supply Chain',
+            'subtitle': 'Automated systems transform logistics operations',
+            'summary': 'Next-generation warehouse robots are revolutionizing supply chain management with intelligent automation and predictive analytics.',
+            'content': 'Amazon\'s latest warehouse robots can predict demand patterns, optimize inventory placement, and coordinate with human workers for maximum efficiency. The system has reduced order fulfillment time by 50% while maintaining 99.9% accuracy.',
+            'category': 'logistics',
+            'tags': 'warehouse automation, supply chain, predictive analytics, logistics',
+            'priority': 'medium',
+            'featured_image': 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800',
+            'source_name': 'Supply Chain Management Review',
+            'author_name': 'Mark Thompson',
+            'robot_type': 'Warehouse Robot',
+            'technology_focus': 'Inventory optimization, predictive analytics, human-robot coordination',
+            'is_featured': False,
+            'is_published': True,
+            'reading_time': 4,
+        },{
+            'title': 'Warehouse Robots Optimize Supply Chain',
+            'subtitle': 'Automated systems transform logistics operations',
+            'summary': 'Next-generation warehouse robots are revolutionizing supply chain management with intelligent automation and predictive analytics.',
+            'content': 'Amazon\'s latest warehouse robots can predict demand patterns, optimize inventory placement, and coordinate with human workers for maximum efficiency. The system has reduced order fulfillment time by 50% while maintaining 99.9% accuracy.',
+            'category': 'logistics',
+            'tags': 'warehouse automation, supply chain, predictive analytics, logistics',
+            'priority': 'medium',
+            'featured_image': 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800',
+            'source_name': 'Supply Chain Management Review',
+            'author_name': 'Mark Thompson',
+            'robot_type': 'Warehouse Robot',
+            'technology_focus': 'Inventory optimization, predictive analytics, human-robot coordination',
+            'is_featured': False,
+            'is_published': True,
+            'reading_time': 4,
         }
     ]
 
@@ -349,6 +724,72 @@ def add_sharxathons():
             'benefits': ['Virtual participation', 'Expert mentorship', 'Investment opportunities', 'Global networking'],
             'is_featured': False,
             'is_published': True,
+        },{
+            'name': 'FinTech Revolution Hackathon',
+            'description': 'Revolutionize financial services with cutting-edge technology',
+            'content': 'Create innovative financial solutions that can transform how people manage money, invest, and access financial services. Open to developers, designers, and finance enthusiasts.',
+            'topic': 'Financial Technology & Blockchain',
+            'difficulty_level': 'advanced',
+            'team_size': '2-3',
+            'max_participants': 200,
+            'start_datetime': timezone.make_aware(datetime.combine(today + timedelta(days=60), time(9, 0))),
+            'end_datetime': timezone.make_aware(datetime.combine(today + timedelta(days=61), time(18, 0))),
+            'registration_deadline': timezone.make_aware(datetime.combine(today + timedelta(days=45), time(23, 59))),
+            'location': 'Virtual Event',
+            'is_virtual': True,
+            'banner_image': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200',
+            'prizes': [
+                {'position': '1st Place', 'prize': '₹3,00,000', 'description': 'Top prize for best financial innovation'},
+                {'position': '2nd Place', 'prize': '₹2,00,000', 'description': 'Second place prize'},
+                {'position': '3rd Place', 'prize': '₹1,00,000', 'description': 'Third place prize'}
+            ],
+            'benefits': ['Virtual participation', 'Expert mentorship', 'Investment opportunities', 'Global networking'],
+            'is_featured': False,
+            'is_published': True,
+        },{
+            'name': 'FinTech Revolution Hackathon',
+            'description': 'Revolutionize financial services with cutting-edge technology',
+            'content': 'Create innovative financial solutions that can transform how people manage money, invest, and access financial services. Open to developers, designers, and finance enthusiasts.',
+            'topic': 'Financial Technology & Blockchain',
+            'difficulty_level': 'advanced',
+            'team_size': '2-3',
+            'max_participants': 200,
+            'start_datetime': timezone.make_aware(datetime.combine(today + timedelta(days=60), time(9, 0))),
+            'end_datetime': timezone.make_aware(datetime.combine(today + timedelta(days=61), time(18, 0))),
+            'registration_deadline': timezone.make_aware(datetime.combine(today + timedelta(days=45), time(23, 59))),
+            'location': 'Virtual Event',
+            'is_virtual': True,
+            'banner_image': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200',
+            'prizes': [
+                {'position': '1st Place', 'prize': '₹3,00,000', 'description': 'Top prize for best financial innovation'},
+                {'position': '2nd Place', 'prize': '₹2,00,000', 'description': 'Second place prize'},
+                {'position': '3rd Place', 'prize': '₹1,00,000', 'description': 'Third place prize'}
+            ],
+            'benefits': ['Virtual participation', 'Expert mentorship', 'Investment opportunities', 'Global networking'],
+            'is_featured': False,
+            'is_published': True,
+        },{
+            'name': 'FinTech Revolution Hackathon',
+            'description': 'Revolutionize financial services with cutting-edge technology',
+            'content': 'Create innovative financial solutions that can transform how people manage money, invest, and access financial services. Open to developers, designers, and finance enthusiasts.',
+            'topic': 'Financial Technology & Blockchain',
+            'difficulty_level': 'advanced',
+            'team_size': '2-3',
+            'max_participants': 200,
+            'start_datetime': timezone.make_aware(datetime.combine(today + timedelta(days=60), time(9, 0))),
+            'end_datetime': timezone.make_aware(datetime.combine(today + timedelta(days=61), time(18, 0))),
+            'registration_deadline': timezone.make_aware(datetime.combine(today + timedelta(days=45), time(23, 59))),
+            'location': 'Virtual Event',
+            'is_virtual': True,
+            'banner_image': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200',
+            'prizes': [
+                {'position': '1st Place', 'prize': '₹3,00,000', 'description': 'Top prize for best financial innovation'},
+                {'position': '2nd Place', 'prize': '₹2,00,000', 'description': 'Second place prize'},
+                {'position': '3rd Place', 'prize': '₹1,00,000', 'description': 'Third place prize'}
+            ],
+            'benefits': ['Virtual participation', 'Expert mentorship', 'Investment opportunities', 'Global networking'],
+            'is_featured': False,
+            'is_published': True,
         }
     ]
 
@@ -357,7 +798,6 @@ def add_sharxathons():
         print(f"✓ Created hackathon: {hackathon.name}")
 
 def add_startup_stories():
-    """Add sample Startup Stories"""
     print("\n--- Adding Startup Stories ---")
     StartupStory.objects.all().delete()
 
@@ -399,6 +839,78 @@ def add_startup_stories():
             'featured_image': 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800',
             'is_featured': True,
             'is_published': True,
+        }, {
+            'heading': 'Sustainability Meets Technology',
+            'subheading': 'Building eco-friendly solutions for urban waste management',
+            'slug': 'sustainability-meets-technology',
+            'summary': 'How a team of environmental engineers created smart waste management solutions that reduced urban waste by 60%.',
+            'content': 'Recognizing the growing waste management crisis in Indian cities, the founders combined IoT technology with sustainable practices to create smart waste collection and recycling solutions.',
+            'key_takeaways': ['Technology can solve environmental problems', 'Government partnerships are crucial', 'Sustainability sells itself', 'Impact investing is real'],
+            'challenges_faced': 'High initial costs, regulatory hurdles, technology adoption in traditional sectors',
+            'solutions_implemented': 'Strategic partnerships with municipal corporations, pilot programs in small cities first',
+            'industry': 'cleantech',
+            'stage': 'series_a',
+            'tags': 'sustainability, IoT, waste management, smart cities',
+            'founder_name': 'Priya Sharma',
+            'company_name': 'EcoSmart Solutions',
+            'founded_year': 2020,
+            'featured_image': 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800',
+            'is_featured': True,
+            'is_published': True,
+        }, {
+            'heading': 'Sustainability Meets Technology',
+            'subheading': 'Building eco-friendly solutions for urban waste management',
+            'slug': 'sustainability-meets-technology',
+            'summary': 'How a team of environmental engineers created smart waste management solutions that reduced urban waste by 60%.',
+            'content': 'Recognizing the growing waste management crisis in Indian cities, the founders combined IoT technology with sustainable practices to create smart waste collection and recycling solutions.',
+            'key_takeaways': ['Technology can solve environmental problems', 'Government partnerships are crucial', 'Sustainability sells itself', 'Impact investing is real'],
+            'challenges_faced': 'High initial costs, regulatory hurdles, technology adoption in traditional sectors',
+            'solutions_implemented': 'Strategic partnerships with municipal corporations, pilot programs in small cities first',
+            'industry': 'cleantech',
+            'stage': 'series_a',
+            'tags': 'sustainability, IoT, waste management, smart cities',
+            'founder_name': 'Priya Sharma',
+            'company_name': 'EcoSmart Solutions',
+            'founded_year': 2020,
+            'featured_image': 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800',
+            'is_featured': True,
+            'is_published': True,
+        }, {
+            'heading': 'Sustainability Meets Technology',
+            'subheading': 'Building eco-friendly solutions for urban waste management',
+            'slug': 'sustainability-meets-technology',
+            'summary': 'How a team of environmental engineers created smart waste management solutions that reduced urban waste by 60%.',
+            'content': 'Recognizing the growing waste management crisis in Indian cities, the founders combined IoT technology with sustainable practices to create smart waste collection and recycling solutions.',
+            'key_takeaways': ['Technology can solve environmental problems', 'Government partnerships are crucial', 'Sustainability sells itself', 'Impact investing is real'],
+            'challenges_faced': 'High initial costs, regulatory hurdles, technology adoption in traditional sectors',
+            'solutions_implemented': 'Strategic partnerships with municipal corporations, pilot programs in small cities first',
+            'industry': 'cleantech',
+            'stage': 'series_a',
+            'tags': 'sustainability, IoT, waste management, smart cities',
+            'founder_name': 'Priya Sharma',
+            'company_name': 'EcoSmart Solutions',
+            'founded_year': 2020,
+            'featured_image': 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800',
+            'is_featured': True,
+            'is_published': True,
+        }, {
+            'heading': 'Sustainability Meets Technology',
+            'subheading': 'Building eco-friendly solutions for urban waste management',
+            'slug': 'sustainability-meets-technology',
+            'summary': 'How a team of environmental engineers created smart waste management solutions that reduced urban waste by 60%.',
+            'content': 'Recognizing the growing waste management crisis in Indian cities, the founders combined IoT technology with sustainable practices to create smart waste collection and recycling solutions.',
+            'key_takeaways': ['Technology can solve environmental problems', 'Government partnerships are crucial', 'Sustainability sells itself', 'Impact investing is real'],
+            'challenges_faced': 'High initial costs, regulatory hurdles, technology adoption in traditional sectors',
+            'solutions_implemented': 'Strategic partnerships with municipal corporations, pilot programs in small cities first',
+            'industry': 'cleantech',
+            'stage': 'series_a',
+            'tags': 'sustainability, IoT, waste management, smart cities',
+            'founder_name': 'Priya Sharma',
+            'company_name': 'EcoSmart Solutions',
+            'founded_year': 2020,
+            'featured_image': 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800',
+            'is_featured': True,
+            'is_published': True,
         }
     ]
 
@@ -413,6 +925,357 @@ def add_talk_episodes():
 
     episodes_data = [
         {
+            'episode_number': 1,
+            'title': 'Building Scalable Startups in India',
+            'header': 'Lessons from a Decade of Entrepreneurship',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'In this inaugural episode, we sit down with Rajesh Kumar, founder of three successful startups, to discuss the challenges and opportunities of building scalable businesses in the Indian market.',
+            'key_takeaways': ['Focus on unit economics from day one', 'Hire for culture fit first', 'Customer feedback is your best product manager', 'Cash flow management is critical'],
+            'speaker_panels': [
+                {
+                    'name': 'Rajesh Kumar',
+                    'title': 'Serial Entrepreneur & Investor',
+                    'bio': 'Founder of 3 successful startups, angel investor, and mentor to 50+ startups',
+                    'avatar_url': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/rajesh-kumar', 'twitter': 'https://twitter.com/rajeshk'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=30)),
+            'duration_minutes': 45,
+            'is_published': True,
+        },
+        {
+            'episode_number': 2,
+            'title': 'AI in Healthcare: Revolution or Hype?',
+            'header': 'Exploring the Future of Medical Technology',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'Dr. Anita Desai joins us to discuss how artificial intelligence is transforming healthcare delivery, from diagnostic tools to personalized treatment plans.',
+            'key_takeaways': ['AI can improve diagnostic accuracy by 30%', 'Data privacy is the biggest challenge', 'Human-AI collaboration is key', 'Regulatory frameworks are evolving'],
+            'speaker_panels': [
+                {
+                    'name': 'Dr. Anita Desai',
+                    'title': 'Chief Medical Officer, HealthTech Solutions',
+                    'bio': 'Former head of AI research at Apollo Hospitals, published 50+ papers on medical AI',
+                    'avatar_url': 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/dr-anita-desai'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=15)),
+            'duration_minutes': 52,
+            'is_published': True,
+        }, {
+            'episode_number': 1,
+            'title': 'Building Scalable Startups in India',
+            'header': 'Lessons from a Decade of Entrepreneurship',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'In this inaugural episode, we sit down with Rajesh Kumar, founder of three successful startups, to discuss the challenges and opportunities of building scalable businesses in the Indian market.',
+            'key_takeaways': ['Focus on unit economics from day one', 'Hire for culture fit first', 'Customer feedback is your best product manager', 'Cash flow management is critical'],
+            'speaker_panels': [
+                {
+                    'name': 'Rajesh Kumar',
+                    'title': 'Serial Entrepreneur & Investor',
+                    'bio': 'Founder of 3 successful startups, angel investor, and mentor to 50+ startups',
+                    'avatar_url': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/rajesh-kumar', 'twitter': 'https://twitter.com/rajeshk'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=30)),
+            'duration_minutes': 45,
+            'is_published': True,
+        },
+        {
+            'episode_number': 2,
+            'title': 'AI in Healthcare: Revolution or Hype?',
+            'header': 'Exploring the Future of Medical Technology',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'Dr. Anita Desai joins us to discuss how artificial intelligence is transforming healthcare delivery, from diagnostic tools to personalized treatment plans.',
+            'key_takeaways': ['AI can improve diagnostic accuracy by 30%', 'Data privacy is the biggest challenge', 'Human-AI collaboration is key', 'Regulatory frameworks are evolving'],
+            'speaker_panels': [
+                {
+                    'name': 'Dr. Anita Desai',
+                    'title': 'Chief Medical Officer, HealthTech Solutions',
+                    'bio': 'Former head of AI research at Apollo Hospitals, published 50+ papers on medical AI',
+                    'avatar_url': 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/dr-anita-desai'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=15)),
+            'duration_minutes': 52,
+            'is_published': True,
+        }, {
+            'episode_number': 1,
+            'title': 'Building Scalable Startups in India',
+            'header': 'Lessons from a Decade of Entrepreneurship',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'In this inaugural episode, we sit down with Rajesh Kumar, founder of three successful startups, to discuss the challenges and opportunities of building scalable businesses in the Indian market.',
+            'key_takeaways': ['Focus on unit economics from day one', 'Hire for culture fit first', 'Customer feedback is your best product manager', 'Cash flow management is critical'],
+            'speaker_panels': [
+                {
+                    'name': 'Rajesh Kumar',
+                    'title': 'Serial Entrepreneur & Investor',
+                    'bio': 'Founder of 3 successful startups, angel investor, and mentor to 50+ startups',
+                    'avatar_url': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/rajesh-kumar', 'twitter': 'https://twitter.com/rajeshk'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=30)),
+            'duration_minutes': 45,
+            'is_published': True,
+        },
+        {
+            'episode_number': 2,
+            'title': 'AI in Healthcare: Revolution or Hype?',
+            'header': 'Exploring the Future of Medical Technology',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'Dr. Anita Desai joins us to discuss how artificial intelligence is transforming healthcare delivery, from diagnostic tools to personalized treatment plans.',
+            'key_takeaways': ['AI can improve diagnostic accuracy by 30%', 'Data privacy is the biggest challenge', 'Human-AI collaboration is key', 'Regulatory frameworks are evolving'],
+            'speaker_panels': [
+                {
+                    'name': 'Dr. Anita Desai',
+                    'title': 'Chief Medical Officer, HealthTech Solutions',
+                    'bio': 'Former head of AI research at Apollo Hospitals, published 50+ papers on medical AI',
+                    'avatar_url': 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/dr-anita-desai'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=15)),
+            'duration_minutes': 52,
+            'is_published': True,
+        }, {
+            'episode_number': 1,
+            'title': 'Building Scalable Startups in India',
+            'header': 'Lessons from a Decade of Entrepreneurship',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'In this inaugural episode, we sit down with Rajesh Kumar, founder of three successful startups, to discuss the challenges and opportunities of building scalable businesses in the Indian market.',
+            'key_takeaways': ['Focus on unit economics from day one', 'Hire for culture fit first', 'Customer feedback is your best product manager', 'Cash flow management is critical'],
+            'speaker_panels': [
+                {
+                    'name': 'Rajesh Kumar',
+                    'title': 'Serial Entrepreneur & Investor',
+                    'bio': 'Founder of 3 successful startups, angel investor, and mentor to 50+ startups',
+                    'avatar_url': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/rajesh-kumar', 'twitter': 'https://twitter.com/rajeshk'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=30)),
+            'duration_minutes': 45,
+            'is_published': True,
+        },
+        {
+            'episode_number': 2,
+            'title': 'AI in Healthcare: Revolution or Hype?',
+            'header': 'Exploring the Future of Medical Technology',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'Dr. Anita Desai joins us to discuss how artificial intelligence is transforming healthcare delivery, from diagnostic tools to personalized treatment plans.',
+            'key_takeaways': ['AI can improve diagnostic accuracy by 30%', 'Data privacy is the biggest challenge', 'Human-AI collaboration is key', 'Regulatory frameworks are evolving'],
+            'speaker_panels': [
+                {
+                    'name': 'Dr. Anita Desai',
+                    'title': 'Chief Medical Officer, HealthTech Solutions',
+                    'bio': 'Former head of AI research at Apollo Hospitals, published 50+ papers on medical AI',
+                    'avatar_url': 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/dr-anita-desai'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=15)),
+            'duration_minutes': 52,
+            'is_published': True,
+        }, {
+            'episode_number': 1,
+            'title': 'Building Scalable Startups in India',
+            'header': 'Lessons from a Decade of Entrepreneurship',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'In this inaugural episode, we sit down with Rajesh Kumar, founder of three successful startups, to discuss the challenges and opportunities of building scalable businesses in the Indian market.',
+            'key_takeaways': ['Focus on unit economics from day one', 'Hire for culture fit first', 'Customer feedback is your best product manager', 'Cash flow management is critical'],
+            'speaker_panels': [
+                {
+                    'name': 'Rajesh Kumar',
+                    'title': 'Serial Entrepreneur & Investor',
+                    'bio': 'Founder of 3 successful startups, angel investor, and mentor to 50+ startups',
+                    'avatar_url': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/rajesh-kumar', 'twitter': 'https://twitter.com/rajeshk'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=30)),
+            'duration_minutes': 45,
+            'is_published': True,
+        },
+        {
+            'episode_number': 2,
+            'title': 'AI in Healthcare: Revolution or Hype?',
+            'header': 'Exploring the Future of Medical Technology',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'Dr. Anita Desai joins us to discuss how artificial intelligence is transforming healthcare delivery, from diagnostic tools to personalized treatment plans.',
+            'key_takeaways': ['AI can improve diagnostic accuracy by 30%', 'Data privacy is the biggest challenge', 'Human-AI collaboration is key', 'Regulatory frameworks are evolving'],
+            'speaker_panels': [
+                {
+                    'name': 'Dr. Anita Desai',
+                    'title': 'Chief Medical Officer, HealthTech Solutions',
+                    'bio': 'Former head of AI research at Apollo Hospitals, published 50+ papers on medical AI',
+                    'avatar_url': 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/dr-anita-desai'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=15)),
+            'duration_minutes': 52,
+            'is_published': True,
+        }, {
+            'episode_number': 1,
+            'title': 'Building Scalable Startups in India',
+            'header': 'Lessons from a Decade of Entrepreneurship',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'In this inaugural episode, we sit down with Rajesh Kumar, founder of three successful startups, to discuss the challenges and opportunities of building scalable businesses in the Indian market.',
+            'key_takeaways': ['Focus on unit economics from day one', 'Hire for culture fit first', 'Customer feedback is your best product manager', 'Cash flow management is critical'],
+            'speaker_panels': [
+                {
+                    'name': 'Rajesh Kumar',
+                    'title': 'Serial Entrepreneur & Investor',
+                    'bio': 'Founder of 3 successful startups, angel investor, and mentor to 50+ startups',
+                    'avatar_url': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/rajesh-kumar', 'twitter': 'https://twitter.com/rajeshk'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=30)),
+            'duration_minutes': 45,
+            'is_published': True,
+        },
+        {
+            'episode_number': 2,
+            'title': 'AI in Healthcare: Revolution or Hype?',
+            'header': 'Exploring the Future of Medical Technology',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'Dr. Anita Desai joins us to discuss how artificial intelligence is transforming healthcare delivery, from diagnostic tools to personalized treatment plans.',
+            'key_takeaways': ['AI can improve diagnostic accuracy by 30%', 'Data privacy is the biggest challenge', 'Human-AI collaboration is key', 'Regulatory frameworks are evolving'],
+            'speaker_panels': [
+                {
+                    'name': 'Dr. Anita Desai',
+                    'title': 'Chief Medical Officer, HealthTech Solutions',
+                    'bio': 'Former head of AI research at Apollo Hospitals, published 50+ papers on medical AI',
+                    'avatar_url': 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/dr-anita-desai'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=15)),
+            'duration_minutes': 52,
+            'is_published': True,
+        }, {
+            'episode_number': 1,
+            'title': 'Building Scalable Startups in India',
+            'header': 'Lessons from a Decade of Entrepreneurship',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'In this inaugural episode, we sit down with Rajesh Kumar, founder of three successful startups, to discuss the challenges and opportunities of building scalable businesses in the Indian market.',
+            'key_takeaways': ['Focus on unit economics from day one', 'Hire for culture fit first', 'Customer feedback is your best product manager', 'Cash flow management is critical'],
+            'speaker_panels': [
+                {
+                    'name': 'Rajesh Kumar',
+                    'title': 'Serial Entrepreneur & Investor',
+                    'bio': 'Founder of 3 successful startups, angel investor, and mentor to 50+ startups',
+                    'avatar_url': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/rajesh-kumar', 'twitter': 'https://twitter.com/rajeshk'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=30)),
+            'duration_minutes': 45,
+            'is_published': True,
+        },
+        {
+            'episode_number': 2,
+            'title': 'AI in Healthcare: Revolution or Hype?',
+            'header': 'Exploring the Future of Medical Technology',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'Dr. Anita Desai joins us to discuss how artificial intelligence is transforming healthcare delivery, from diagnostic tools to personalized treatment plans.',
+            'key_takeaways': ['AI can improve diagnostic accuracy by 30%', 'Data privacy is the biggest challenge', 'Human-AI collaboration is key', 'Regulatory frameworks are evolving'],
+            'speaker_panels': [
+                {
+                    'name': 'Dr. Anita Desai',
+                    'title': 'Chief Medical Officer, HealthTech Solutions',
+                    'bio': 'Former head of AI research at Apollo Hospitals, published 50+ papers on medical AI',
+                    'avatar_url': 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/dr-anita-desai'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=15)),
+            'duration_minutes': 52,
+            'is_published': True,
+        }, {
+            'episode_number': 1,
+            'title': 'Building Scalable Startups in India',
+            'header': 'Lessons from a Decade of Entrepreneurship',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'In this inaugural episode, we sit down with Rajesh Kumar, founder of three successful startups, to discuss the challenges and opportunities of building scalable businesses in the Indian market.',
+            'key_takeaways': ['Focus on unit economics from day one', 'Hire for culture fit first', 'Customer feedback is your best product manager', 'Cash flow management is critical'],
+            'speaker_panels': [
+                {
+                    'name': 'Rajesh Kumar',
+                    'title': 'Serial Entrepreneur & Investor',
+                    'bio': 'Founder of 3 successful startups, angel investor, and mentor to 50+ startups',
+                    'avatar_url': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/rajesh-kumar', 'twitter': 'https://twitter.com/rajeshk'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=30)),
+            'duration_minutes': 45,
+            'is_published': True,
+        },
+        {
+            'episode_number': 2,
+            'title': 'AI in Healthcare: Revolution or Hype?',
+            'header': 'Exploring the Future of Medical Technology',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'Dr. Anita Desai joins us to discuss how artificial intelligence is transforming healthcare delivery, from diagnostic tools to personalized treatment plans.',
+            'key_takeaways': ['AI can improve diagnostic accuracy by 30%', 'Data privacy is the biggest challenge', 'Human-AI collaboration is key', 'Regulatory frameworks are evolving'],
+            'speaker_panels': [
+                {
+                    'name': 'Dr. Anita Desai',
+                    'title': 'Chief Medical Officer, HealthTech Solutions',
+                    'bio': 'Former head of AI research at Apollo Hospitals, published 50+ papers on medical AI',
+                    'avatar_url': 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/dr-anita-desai'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=15)),
+            'duration_minutes': 52,
+            'is_published': True,
+        }, {
+            'episode_number': 1,
+            'title': 'Building Scalable Startups in India',
+            'header': 'Lessons from a Decade of Entrepreneurship',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'In this inaugural episode, we sit down with Rajesh Kumar, founder of three successful startups, to discuss the challenges and opportunities of building scalable businesses in the Indian market.',
+            'key_takeaways': ['Focus on unit economics from day one', 'Hire for culture fit first', 'Customer feedback is your best product manager', 'Cash flow management is critical'],
+            'speaker_panels': [
+                {
+                    'name': 'Rajesh Kumar',
+                    'title': 'Serial Entrepreneur & Investor',
+                    'bio': 'Founder of 3 successful startups, angel investor, and mentor to 50+ startups',
+                    'avatar_url': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/rajesh-kumar', 'twitter': 'https://twitter.com/rajeshk'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=30)),
+            'duration_minutes': 45,
+            'is_published': True,
+        },
+        {
+            'episode_number': 2,
+            'title': 'AI in Healthcare: Revolution or Hype?',
+            'header': 'Exploring the Future of Medical Technology',
+            'youtube_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'description': 'Dr. Anita Desai joins us to discuss how artificial intelligence is transforming healthcare delivery, from diagnostic tools to personalized treatment plans.',
+            'key_takeaways': ['AI can improve diagnostic accuracy by 30%', 'Data privacy is the biggest challenge', 'Human-AI collaboration is key', 'Regulatory frameworks are evolving'],
+            'speaker_panels': [
+                {
+                    'name': 'Dr. Anita Desai',
+                    'title': 'Chief Medical Officer, HealthTech Solutions',
+                    'bio': 'Former head of AI research at Apollo Hospitals, published 50+ papers on medical AI',
+                    'avatar_url': 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200',
+                    'social_links': {'linkedin': 'https://linkedin.com/in/dr-anita-desai'}
+                }
+            ],
+            'published_at': timezone.make_aware(datetime.now() - timedelta(days=15)),
+            'duration_minutes': 52,
+            'is_published': True,
+        }, {
             'episode_number': 1,
             'title': 'Building Scalable Startups in India',
             'header': 'Lessons from a Decade of Entrepreneurship',
@@ -496,6 +1359,188 @@ def add_tech_news():
             'meta_description': 'SpaceX achieves historic Starship landing on Mars',
         },
         {
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
+            'title': 'Quantum Computing Breakthrough Achieved',
+            'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
+            'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
+            'content': 'In a major breakthrough, scientists at Quantum Labs have developed a quantum computer capable of maintaining quantum states for extended periods, overcoming one of the biggest challenges in quantum computing.',
+            'category': 'quantum',
+            'tags': ['quantum computing', 'error correction', 'qubits', 'breakthrough'],
+            'priority': 'high',
+            'featured_image': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800',
+            'author_name': 'Dr. Lisa Wang',
+            'read_time_minutes': 6,
+            'is_featured': False,
+            'is_published': True,
+            'meta_description': 'Major quantum computing breakthrough with error-corrected 100+ qubit system',
+        },{
             'title': 'Quantum Computing Breakthrough Achieved',
             'subtitle': 'Scientists demonstrate error-corrected quantum computer with 100+ qubits',
             'excerpt': 'A team of researchers has successfully demonstrated a quantum computer with over 100 error-corrected qubits, bringing practical quantum computing applications closer to reality.',
@@ -615,13 +1660,28 @@ def main():
     print(f"   • YouTube Videos: {YouTubeVideo.objects.count()}")
 
     print("\n🔄 Next Steps:")
-    print("1. Run the Django development server: python manage.py runserver")
-    print("2. Access the Django admin at: http://localhost:8000/admin/")
-    print("3. Login with: admin / admin123")
-    print("4. Check that all data appears in the admin interface")
-    print("5. Test the frontend API endpoints to ensure data is being served correctly")
-    print("6. Update frontend components to display the new data")
-    print("7. Test the complete user flow from frontend to backend")
+    if os.environ.get('RENDER') or os.environ.get('DATABASE_URL'):
+        print("1. Access the Django admin at: https://neosharx-backend-1.onrender.com/admin/")
+        print("2. Login with: admin / admin123")
+        print("3. Check that all data appears in the admin interface")
+        print("4. Test the frontend API endpoints to ensure data is being served correctly")
+        print("5. Update frontend components to display the new data")
+        print("6. Test the complete user flow from frontend to backend")
+        print("\n🧪 Test API endpoints:")
+        print("   • Events: https://neosharx-backend-1.onrender.com/api/events/")
+        print("   • Tech News: https://neosharx-backend-1.onrender.com/api/tech-news/")
+        print("   • YouTube Videos: https://neosharx-backend-1.onrender.com/api/youtube-videos/")
+        print("   • Startup Stories: https://neosharx-backend-1.onrender.com/api/stories/")
+        print("   • Neo Projects: https://neosharx-backend-1.onrender.com/api/neo-projects/")
+        print("   • And more...")
+    else:
+        print("1. Run the Django development server: python manage.py runserver")
+        print("2. Access the Django admin at: http://localhost:8000/admin/")
+        print("3. Login with: admin / admin123")
+        print("4. Check that all data appears in the admin interface")
+        print("5. Test the frontend API endpoints to ensure data is being served correctly")
+        print("6. Update frontend components to display the new data")
+        print("7. Test the complete user flow from frontend to backend")
 
 if __name__ == '__main__':
     main()
